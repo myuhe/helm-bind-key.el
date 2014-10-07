@@ -1,3 +1,54 @@
+;;; helm-bind-key.el --- helm-source for for bind-key.
+
+;; Copyright (C) 2014 Yuhei Maeda <yuhei.maeda_at_gmail.com>
+;; Author: Yuhei Maeda <yuhei.maeda_at_gmail.com>
+;; Maintainer: myuhe
+;; Version: 0.1
+;; Package-version: 0.1
+;; Package-Requires: ((bind-key "1.0") (helm "1.6.4"))
+;; Created: 2014-10-08 
+;; Keywords: convenience, emulation
+
+;; This program is free software; you can redistribute it and/or modify
+;; it under the terms of the GNU General Public License as published by
+;; the Free Software Foundation; either version 3, or (at your option)
+;; any later version.
+
+;; This file is distributed in the hope that it will be useful,
+;; but WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+;; GNU General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with GNU Emacs; see the file COPYING.  If not, write to
+;; the Free Software Foundation, Inc., 51 Franklin Street, Fifth Floor,
+;; Boston, MA 02110-1301, USA.
+
+;;; Commentary:
+;;
+;; It is necessary to Some Helm and gist.el Configurations.
+;;
+
+;;; Installation:
+;;
+;; Put the gist.el to your
+;; load-path.
+;; Add to .emacs:
+;; (require 'helm-bind-key)
+;;
+
+;;; Changelog:
+;;
+
+;;; Command:
+;;  `helm-for-'
+
+;;  Helm sources defined :
+;; `helm-c-source-gist'     (list and edit gist)
+
+;;; Code:
+
+
 (defun my-create-sources ()
   "[internal] create an helm source for orgcard."
   (let (heads 
@@ -26,3 +77,5 @@
         (push (format "%-10s\t%s" (caar binding) (cadr binding)) cur-records)))
       (setq last-binding binding))
     (reverse heads)))
+
+;;; helm-bind-key.el ends here
