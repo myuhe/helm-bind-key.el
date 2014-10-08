@@ -25,32 +25,29 @@
 ;; Boston, MA 02110-1301, USA.
 
 ;;; Commentary:
-;;
-;; It is necessary to Some Helm and gist.el Configurations.
+;; 
+;; It is necessary to Some Helm and bind-key.el Configurations.
 ;;
 
 ;;; Installation:
 ;;
-;; Put the gist.el to your
+;; Put the helm-bin-key.el to your
 ;; load-path.
 ;; Add to .emacs:
 ;; (require 'helm-bind-key)
 ;;
 
 ;;; Changelog:
-;;
+;;  2014/10/08  Initial release
+             
 
 ;;; Command:
-;;  `helm-for-'
+;;  `helm-bind-key'
 
-;;  Helm sources defined :
-;; `helm-c-source-gist'     (list and edit gist)
 
 ;;; Code:
-
-
-(defun my-create-sources ()
-  "[internal] create an helm source for orgcard."
+(defun hbk-create-sources ()
+  "[internal] create an helm source for bind-key."
   (let (heads 
         cur-title 
         cur-records
@@ -58,17 +55,16 @@
     (dolist (binding
              (setq personal-keybindings
                    (sort personal-keybindings
-                         #'(lambda (l r)
-                             (car (compare-keybindings l r))))))
+                         (lambda (l r)
+                           (car (compare-keybindings l r))))))
       (cond
-       ((equal last-binding nil) nil)     ; do nothing
+       ((equal last-binding nil) nil)
        ((equal (cdar binding) nil) nil)
        ((eq (cdar last-binding) (cdar binding))
         (push (cons (format "%-10s\t%s" (caar binding) (cadr binding)) (cadr binding)) cur-records))
-
        (t
         (setq cur-title (symbol-name(cdar last-binding)))
-        (push 
+        (push
          `((name . ,cur-title)
            (candidates ,@cur-records)
            (type . command))
@@ -77,5 +73,11 @@
         (push (format "%-10s\t%s" (caar binding) (cadr binding)) cur-records)))
       (setq last-binding binding))
     (reverse heads)))
+
+;;;###autoload
+(defun helm-bind-key ()
+  "Helm command for bind-key."
+  (interactive)
+  (helm (hbk-create-sources)))
 
 ;;; helm-bind-key.el ends here
