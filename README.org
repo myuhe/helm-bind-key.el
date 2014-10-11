@@ -1,0 +1,17 @@
+* What is org-gcal ?
+ =helm-bind-key= provides [[https://github.com/emacs-helm/helm][Helm]] interface for [[https://github.com/jwiegley/use-package/blob/master/bind-key.el][bind-key]] 
+ =helm-bind-key=  making customizes key bindings interactively searchable with helm.
+
+* Screenshot
+ [[./screenshot.png]]
+
+* Requirements
+ 
+- [[https://github.com/emacs-helm/helm][Helm]]
+- [[https://github.com/jwiegley/use-package/blob/master/bind-key.el][bind-key]] 
+
+  =helm-bind-key== is now available in the famous emacs package repo [[http://melpa.milkbox.net/][MELPA]], so the recommended way is to install it through Emacs package management system.
+
+
+* Similar appilications
+  [[https://github.com/emacs-helm/helm-descbinds][emacs-helm/helm-descbinds]]  had an influence on  =helm-bind-key= .
