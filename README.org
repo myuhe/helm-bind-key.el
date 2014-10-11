@@ -3,7 +3,7 @@
  =helm-bind-key=  making customizes key bindings interactively searchable with helm.
 
 * Screenshot
- [[./screenshot.png]]
+ [[./image/screenshot.png]]
 
 * Requirements
  
