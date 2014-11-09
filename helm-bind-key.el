@@ -46,6 +46,9 @@
 
 
 ;;; Code:
+(require 'bind-key)
+(require 'helm)
+
 (defun hbk-create-sources ()
   "[internal] create an helm source for bind-key."
   (let (heads 
@@ -79,5 +82,7 @@
   "Helm command for bind-key."
   (interactive)
   (helm (hbk-create-sources)))
+
+(provide 'helm-bind-key)
 
 ;;; helm-bind-key.el ends here
